@@ -1,24 +1,35 @@
 import logo from './logo.svg';
 import './App.css';
+import {
+  BrowserRouter as Router,
+  Route, Switch,
+  Link,
+} from 'react-router-dom';
+import Header from './Components/Head/Header';
+import StateEffect from './Components/StateEffect';
+import Services from './Components/Services';
+import ContextCom from './Components/ContextCom';
+import ReducerCom from './Components/ReducerCom';
+import CallbackCom from './Components/CallbackCom';
+import NotFound from './NotFound';
+import Params from './Components/Params';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <Header />
+        <Switch>
+          <Route path="/ContextCom" component={ContextCom} />
+          <Route path="/StateEffect" component={StateEffect} />
+          <Route path="/ReducerCom" component={ReducerCom} />
+          <Route path="/CallbackCom" component={CallbackCom} />
+          <Route path="/Services/:id" component={Services} />
+          <Route component={NotFound} />
+
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
